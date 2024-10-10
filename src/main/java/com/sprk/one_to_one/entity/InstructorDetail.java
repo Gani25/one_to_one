@@ -1,20 +1,17 @@
 package com.sprk.one_to_one.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
 @Data
-public class InstructorDetails {
+public class InstructorDetail {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     /*
     * ALTER TABLE instructor_details AUTO_INCREMENT = 1001;
      * */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int instructorDetailId;
 
     private String hobby;

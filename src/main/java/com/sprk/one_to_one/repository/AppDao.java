@@ -1,6 +1,7 @@
 package com.sprk.one_to_one.repository;
 
 import com.sprk.one_to_one.entity.Instructor;
+import com.sprk.one_to_one.entity.InstructorDetail;
 import jakarta.persistence.EntityManager;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,5 +18,10 @@ public class AppDao {
     @Transactional
     public Instructor saveInstructor(Instructor instructor) {
         return entityManager.merge(instructor);
+    }
+
+    @Transactional
+    public InstructorDetail saveInstructorDetail(InstructorDetail instructorDetail) {
+        return  entityManager.merge(instructorDetail);
     }
 }

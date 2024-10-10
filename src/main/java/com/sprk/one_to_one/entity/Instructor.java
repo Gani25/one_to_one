@@ -1,9 +1,6 @@
 package com.sprk.one_to_one.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -19,5 +16,9 @@ public class Instructor {
     private String lastName;
 
     private String phone;
+
+    @OneToOne()
+    @JoinColumn(name = "instructor_detail_id")
+    private InstructorDetail instructorDetail;
 
 }
