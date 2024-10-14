@@ -35,5 +35,26 @@ public class DemoController {
         return message;
 
     }
+
+    @PutMapping("/updatebyid/{instructorId}")
+    public Instructor updateByInstructorId(@PathVariable int instructorId, @RequestBody Instructor instructor) {
+        Instructor savedInstructor = appDao.getInstructorById(instructorId);
+        if (savedInstructor != null) {
+            InstructorDetail updatedInstructorDetail = instructor.getInstructorDetail();
+            updatedInstructorDetail.setInstructorDetailId(savedInstructor.getInstructorDetail().getInstructorDetailId());
+
+
+            appDao.saveInstructorDetail(updatedInstructorDetail);
+
+            instructor.setInstructorId(savedInstructor.getInstructorId());
+            instructor.setInstructorDetail(updatedInstructorDetail);
+
+            return appDao.saveInstructor(instructor);
+
+
+        } else {
+            return null;
+        }
+    }
 }
 

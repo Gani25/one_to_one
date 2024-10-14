@@ -41,4 +41,26 @@ public class AppDao {
         }
 
     }
+
+//    @Transactional
+//    public Instructor updateInstructorById(int instructorId, Instructor instructor) {
+//
+//        Instructor instructor1 = getInstructorById(instructorId);
+//        InstructorDetail instructorDetail = instructor.getInstructorDetail();
+//        instructorDetail.setInstructorDetailId(instructor1.getInstructorDetail().getInstructorDetailId());
+//        if(instructor1 != null) {
+//            InstructorDetail updaInstructorDetail =  entityManager.merge(instructorDetail);
+//
+//            instructor.setInstructorDetail(updaInstructorDetail);
+//            Instructor updatedInstructor = entityManager.merge(instructor);
+//
+//            updatedInstructor.setInstructorDetail(updaInstructorDetail);
+//
+//            return updatedInstructor;
+//
+//        }else{
+//            return null;
+//        }
+//
+//    }
 }
