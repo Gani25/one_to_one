@@ -4,9 +4,7 @@ import com.sprk.one_to_one.entity.Instructor;
 import com.sprk.one_to_one.entity.InstructorDetail;
 import com.sprk.one_to_one.repository.AppDao;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
@@ -24,4 +22,18 @@ public class DemoController {
 
         return appDao.saveInstructor(instructor);
     }
+
+    @GetMapping("/getbyid/{instructorId}")
+    public Instructor getInstructorById(@PathVariable int instructorId) {
+        return appDao.getInstructorById(instructorId);
+    }
+
+    @DeleteMapping("/deletebyid/{instructorId}")
+    public String deleteByInstructorId(@PathVariable int instructorId) {
+        String message = appDao.deleteInstructorById(instructorId);
+
+        return message;
+
+    }
 }
+

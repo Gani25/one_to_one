@@ -24,4 +24,21 @@ public class AppDao {
     public InstructorDetail saveInstructorDetail(InstructorDetail instructorDetail) {
         return  entityManager.merge(instructorDetail);
     }
+
+    public Instructor getInstructorById(int id) {
+        return entityManager.find(Instructor.class, id);
+    }
+
+    @Transactional
+    public String deleteInstructorById(int instructorId) {
+        Instructor instructor = getInstructorById(instructorId);
+        if(instructor != null) {
+            entityManager.remove(instructor);
+            entityManager.remove(instructor.getInstructorDetail());
+            return "Deleted successfully";
+        }else{
+            return "Not Found!!";
+        }
+
+    }
 }
