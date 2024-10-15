@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Repository
 @AllArgsConstructor
 public class AppDao {
@@ -22,7 +24,7 @@ public class AppDao {
 
     @Transactional
     public InstructorDetail saveInstructorDetail(InstructorDetail instructorDetail) {
-        return  entityManager.merge(instructorDetail);
+        return entityManager.merge(instructorDetail);
     }
 
     public Instructor getInstructorById(int id) {
@@ -32,14 +34,20 @@ public class AppDao {
     @Transactional
     public String deleteInstructorById(int instructorId) {
         Instructor instructor = getInstructorById(instructorId);
-        if(instructor != null) {
+        if (instructor != null) {
             entityManager.remove(instructor);
-            entityManager.remove(instructor.getInstructorDetail());
+//            entityManager.remove(instructor.getInstructorDetail());
             return "Deleted successfully";
-        }else{
+        } else {
             return "Not Found!!";
         }
 
+    }
+
+    public List<Instructor> getAllInstructors() {
+        List<Instructor> instructors = entityManager.createQuery("from Instructor").getResultList();
+
+        return instructors;
     }
 
 //    @Transactional
