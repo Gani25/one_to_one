@@ -45,9 +45,6 @@ public class DemoController {
             InstructorDetail updatedInstructorDetail = instructor.getInstructorDetail();
             updatedInstructorDetail.setInstructorDetailId(savedInstructor.getInstructorDetail().getInstructorDetailId());
 
-
-//            appDao.saveInstructorDetail(updatedInstructorDetail);
-
             instructor.setInstructorId(savedInstructor.getInstructorId());
             instructor.setInstructorDetail(updatedInstructorDetail);
 
@@ -57,6 +54,22 @@ public class DemoController {
         } else {
             return null;
         }
+    }
+
+    @GetMapping("/find-detail/{instructorDetailId}")
+    public InstructorDetail getInstructorDetailById(@PathVariable int instructorDetailId) {
+
+        return appDao.findInstructorDetailById(instructorDetailId);
+    }
+
+    @PostMapping("/saveDetail")
+    public Instructor saveInstructorDetail(@RequestBody InstructorDetail instructorDetail) {
+
+        Instructor instructor = instructorDetail.getInstructor();
+        instructor.setInstructorDetail(instructorDetail);
+
+      return appDao.saveInstructor(instructor);
+
     }
 }
 

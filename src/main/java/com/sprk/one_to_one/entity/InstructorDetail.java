@@ -1,5 +1,6 @@
 package com.sprk.one_to_one.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -17,4 +18,10 @@ public class InstructorDetail {
     private String hobby;
 
     private String qualification;
+
+    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH} ,mappedBy = "instructorDetail")
+    @JsonBackReference
+    private Instructor instructor;
+
+
 }

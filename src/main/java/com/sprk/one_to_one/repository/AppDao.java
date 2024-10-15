@@ -36,7 +36,6 @@ public class AppDao {
         Instructor instructor = getInstructorById(instructorId);
         if (instructor != null) {
             entityManager.remove(instructor);
-//            entityManager.remove(instructor.getInstructorDetail());
             return "Deleted successfully";
         } else {
             return "Not Found!!";
@@ -50,25 +49,8 @@ public class AppDao {
         return instructors;
     }
 
-//    @Transactional
-//    public Instructor updateInstructorById(int instructorId, Instructor instructor) {
-//
-//        Instructor instructor1 = getInstructorById(instructorId);
-//        InstructorDetail instructorDetail = instructor.getInstructorDetail();
-//        instructorDetail.setInstructorDetailId(instructor1.getInstructorDetail().getInstructorDetailId());
-//        if(instructor1 != null) {
-//            InstructorDetail updaInstructorDetail =  entityManager.merge(instructorDetail);
-//
-//            instructor.setInstructorDetail(updaInstructorDetail);
-//            Instructor updatedInstructor = entityManager.merge(instructor);
-//
-//            updatedInstructor.setInstructorDetail(updaInstructorDetail);
-//
-//            return updatedInstructor;
-//
-//        }else{
-//            return null;
-//        }
-//
-//    }
+    public InstructorDetail findInstructorDetailById(int instructorDetailId) {
+
+        return entityManager.find(InstructorDetail.class, instructorDetailId);
+    }
 }
