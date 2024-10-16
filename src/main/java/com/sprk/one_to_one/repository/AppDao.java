@@ -67,4 +67,16 @@ public class AppDao {
             return "Not Found!!";
         }
     }
+
+    @Transactional
+    public Instructor updateInstrutorDetail(int instructorId, InstructorDetail instructorDetail) {
+
+        Instructor instructor = entityManager.find(Instructor.class, instructorId);
+        if(instructor != null) {
+            instructor.setInstructorDetail(instructorDetail);
+            return  entityManager.merge(instructor);
+        }else{
+            return  null;
+        }
+    }
 }

@@ -79,5 +79,11 @@ public class DemoController {
         return message;
 
     }
+
+    @PutMapping("/update-detail/{instructorId}")
+    public Instructor updateInstructorDetail(@PathVariable int instructorId, @RequestBody InstructorDetail instructorDetail) {
+
+        return appDao.updateInstrutorDetail(instructorId, instructorDetail);
+    }
 }
 
